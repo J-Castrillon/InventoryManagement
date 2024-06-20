@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist", // Donde queda el proyecto compilado;
+        "rootDir": "./src", // De donde compila;
+        "lib": ["esnext"], // Version de javascript para compilado;
+        "target": "ESNext", // Version de compilado; 
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
+        "strict": false, // Permite o no el alto tipado; 
+        "sourceMap": true, // Genera los mapas;  
+        "esModuleInterop": true, // Libreria de commonjs;
+        "declaration": true, // Archivos de definicion;
+        "experimentalDecorators": true, // Decoradores de las tablas;
+        "emitDecoratorMetadata": true // // Decoradores de las tablas;
+    },
+    "includes": ["src/**/*.ts"]
+}
