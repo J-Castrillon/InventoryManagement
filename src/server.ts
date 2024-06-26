@@ -1,9 +1,11 @@
 import express from "express";
 import routerProducts from "./routers/productos";
 import colors from "colors";
+import cors, {CorsOptions} from 'cors';
 import db from "./config/db";
 import swaggerUi from 'swagger-ui-express'; 
 import swaggerSpec, {swaggerUiOptions} from "./config/swagger";
+import morgan from "morgan";
 
 // Base de datos;
 export const connectDB = async () => {
@@ -24,8 +26,25 @@ connectDB();
 // Crear el servidor; 
 const server = express();
 
+// CORS;
+const corsOptions : CorsOptions = {
+  origin: (origin, callback) => {
+    if(origin === process.env.CLIENT_URL){
+      callback(null, true); // Si hay error, si se permite la conexion;  
+    }else{
+      callback(new Error('Error CORS'), false);
+    }
+  }
+}
+
+server.use(cors(corsOptions));
+
+// Morgan - info requests HTTP; 
+server.use(morgan('dev')); // Tiene varias opciones, como combined, common, short, etc. Cambian los formatos; 
+// Esta en este caso devuelve POST /api/v1/products 201 222.925 ms - 176;
+
 // Tratar las respuestas; 
-server.use(express.json())
+server.use(express.json()); 
 
 // Routing;
 server.use("/api/v1/products", routerProducts);

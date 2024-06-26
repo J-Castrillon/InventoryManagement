@@ -13,5 +13,6 @@
         "experimentalDecorators": true, // Decoradores de las tablas;
         "emitDecoratorMetadata": true // // Decoradores de las tablas;
     },
-    "includes": ["src/**/*.ts"]
+    "includes": ["src/**/*.ts"], 
+    "exclude": ["src/**/*.test.ts"] // Para que los test no se vayan a producción; 
 }
