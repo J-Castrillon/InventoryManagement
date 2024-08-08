@@ -37,7 +37,7 @@ const corsOptions : CorsOptions = {
   }
 }
 
-server.use(cors(corsOptions));
+server.use(cors());
 
 // Morgan - info requests HTTP; 
 server.use(morgan('dev')); // Tiene varias opciones, como combined, common, short, etc. Cambian los formatos; 
